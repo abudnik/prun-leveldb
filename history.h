@@ -48,6 +48,6 @@ struct IHistory
 
 
 extern "C" common::IHistory *CreateHistory( int interfaceVersion );
-extern "C" void DestroyHistory( common::IHistory * );
+extern "C" void DestroyHistory( const common::IHistory * );
 
 #endif

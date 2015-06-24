@@ -1,3 +1,5 @@
+#define BOOST_SPIRIT_THREADSAFE
+
 #include "dblevel.h"
 #include <boost/property_tree/json_parser.hpp>
 
@@ -63,7 +65,7 @@ common::IHistory *CreateHistory( int interfaceVersion )
         new DbLevel : nullptr;
 }
 
-void DestroyHistory( common::IHistory *history )
+void DestroyHistory( const common::IHistory *history )
 {
     delete history;
 }
