@@ -26,28 +26,40 @@ void DbLevel::Shutdown()
 
 void DbLevel::Put( const std::string &key, const std::string &value )
 {
-    leveldb::Status status = db_->Put( leveldb::WriteOptions(), key, value );
-    if ( !status.ok() )
-        throw std::logic_error( status.ToString() );
+    DbPtr db = db_;
+    if ( db )
+    {
+        leveldb::Status status = db->Put( leveldb::WriteOptions(), key, value );
+        if ( !status.ok() )
+            throw std::logic_error( status.ToString() );
+    }
 }
 
 void DbLevel::Delete( const std::string &key )
 {
-    leveldb::Status status = db_->Delete( leveldb::WriteOptions(), key );
-    if ( !status.ok() )
-        throw std::logic_error( status.ToString() );
+    DbPtr db = db_;
+    if ( db )
+    {
+        leveldb::Status status = db->Delete( leveldb::WriteOptions(), key );
+        if ( !status.ok() )
+            throw std::logic_error( status.ToString() );
+    }
 }
 
 void DbLevel::GetAll( GetCallback callback )
 {
-    std::unique_ptr< leveldb::Iterator > it( db_->NewIterator( leveldb::ReadOptions() ) );
-    for( it->SeekToFirst(); it->Valid(); it->Next() )
+    DbPtr db = db_;
+    if ( db )
     {
-        callback( it->key().ToString(), it->value().ToString() );
-    }
+        std::unique_ptr< leveldb::Iterator > it( db->NewIterator( leveldb::ReadOptions() ) );
+        for( it->SeekToFirst(); it->Valid(); it->Next() )
+        {
+            callback( it->key().ToString(), it->value().ToString() );
+        }
 
-    if ( !it->status().ok() )
-        throw std::logic_error( it->status().ToString() );
+        if ( !it->status().ok() )
+            throw std::logic_error( it->status().ToString() );
+    }
 }
 
 void DbLevel::ParseConfig( const std::string &configPath )

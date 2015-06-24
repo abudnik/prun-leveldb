@@ -6,7 +6,7 @@
 
 class DbLevel : public common::IHistory
 {
-    typedef std::unique_ptr< leveldb::DB > DbPtr;
+    typedef std::shared_ptr< leveldb::DB > DbPtr;
 
 public:
     virtual void Initialize( const std::string &configPath );
