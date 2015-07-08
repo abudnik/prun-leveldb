@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: prun-leveldb
 Upstream-Contact: Andrey Budnik <budnik27@gmail.com>
-Source: https://github.com/abudnik/prun
+Source: https://github.com/abudnik/prun-leveldb
 
 Files: *
 Copyright: (C) 2013+ Andrey Budnik <budnik27@gmail.com>
