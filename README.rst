@@ -38,7 +38,7 @@ Configuration
 -------------
 
 Example of prun-leveldb config file: prun/conf/history-leveldb.cfg
+
 Config is represented in the JSON formatted file with following properties:
 
-- db_path
-Path to directory containing leveldb database files.
+``db_path`` - path to directory containing leveldb database files.
