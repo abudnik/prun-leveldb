@@ -19,7 +19,7 @@ Prun-leveldb is a prun job serialization library
 
 
 %package prun-leveldb
-Summary:	Distributed cron and job scheduler
+Summary:	Prun job serialization library
 Group:		System Environment/Libraries
 
 %description prun-leveldb
