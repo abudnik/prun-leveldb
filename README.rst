@@ -10,7 +10,8 @@ Build requirements:
 - cmake 2.6 (or higher)
 - GCC 4.6 (or higher) or Clang
 - boost 1.46 (or higher)
-- leveldb
+- leveldb-dev
+- snappy-dev
 
 Building debian packages::
 
